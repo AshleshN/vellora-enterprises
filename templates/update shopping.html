@@ -22,7 +22,7 @@
             Buy Now
         </a>
 
-        <a href="/add-to-cart/{{ product.id }}">
+        <a href="{{ url_for('add-to-cart', product_id=product.id) }}">
             Add to Cart
         </a>
     </div>

@@ -143,7 +143,19 @@ def delete_product(product_id):
     return redirect(url_for("admin_dashboard"))
 
 
-@app.route("/add_to_cart/<int:product_id>")
+@app.route("/cart")
+@login_required
+def cart():
+    cart_ids = session.get("cart", [])
+
+    cart_items = Product.query.filter(Product.id.in_(cart_ids)).all()
+
+    total = sum(item.price for item in cart_items)
+
+    return render_template("cart.html", cart=cart_items, total=total)
+
+
+@app.route("/add-to-cart/<int:product_id>")
 def add_to_cart(product_id):
     if "cart" not in session:
         session["cart"] = []
@@ -158,18 +170,6 @@ def add_to_cart(product_id):
 def product_detail(product_id):
     product = Product.query.get_or_404(product_id)
     return render_template("product_detail.html", product=product)
-
-
-@app.route("/cart")
-@login_required
-def cart():
-    cart_ids = session.get("cart", [])
-
-    cart_items = Product.query.filter(Product.id.in_(cart_ids)).all()
-
-    total = sum(item.price for item in cart_items)
-
-    return render_template("cart.html", cart=cart_items, total=total)
 
 
 @app.route("/settings", methods=["GET", "POST"])
