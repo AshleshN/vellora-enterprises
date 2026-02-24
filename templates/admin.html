@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="admin-panel page">
+
+    <h2><a href="/add-product" class="add-btn">+ Add Product</a></h2>
+
+    <h1>Admin Dashboard</h1>
+
+    <div class="analytics">
+        <div class="stat">Total Users: {{ total_users }}</div>
+        <div class="stat">Premium Users: {{ premium_users }}</div>
+        <div class="stat">Admins: {{ admin_users }}</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Premium</th>
+            <th>Admin</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.is_premium }}</td>
+            <td>{{ user.is_admin }}</td>
+            <td>
+                <a href="/make-premium/{{ user.id }}">Premium</a>
+                <a href="/make-admin/{{ user.id }}">Admin</a>
+                <a href="/delete-user/{{ user.id }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <h2>Products</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>₹{{ product.price }}</td>
+            <td>
+                <a href="/delete-product/{{ product.id }}"
+                onclick="return confirm('Are you sure you want to delete this product?');">
+                Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page">
+
+    <h1>Your Cart</h1>
+
+    {% if cart %}
+
+        <div class="products">
+            {% for product in cart %}
+            <a href="/product/{{ product.id }}" class="product-link">
+            <div class="card">
+                <img src="{{ product.image }}">
+                <h3>{{ product.name }}</h3>
+                <p>₹{{ product.price }}</p>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div class="bill-strip">
+            <span>Total: ₹{{ total }}</span>
+            <button>Proceed to Checkout</button>
+        </div>
+
+
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card tilt">
+    {% if locked %}
+        <h2>Premium Members Only</h2>
+        <p>This feature is exclusive.</p>
+        <a href="/upgrade"><button>Upgrade Now</button></a>
+    {% else %}
+        <h2>Welcome to Premium. </h2>
+        <p>Premium is empty</p><p> Please try later.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+</body>
+</html>

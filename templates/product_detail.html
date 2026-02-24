@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+
+<div class="product-page">
+
+    <div class="product-image">
+        <img src="{{ product.image }}">
+    </div>
+
+    <div class="product-info">
+        <h1>{{ product.name }}</h1>
+        <h2>₹{{ product.price }}</h2>
+        <p>{{ product.description }}</p>
+
+        <a href="{{ product.affiliate_link }}" target="_blank" class="buy-btn">
+            Buy Now
+        </a>
+
+        <a href="/add-to-cart/{{ product.id }}" class="cart-btn">
+            Add to Cart
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>
