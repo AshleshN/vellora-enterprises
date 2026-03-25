@@ -276,7 +276,7 @@ def delete_user(user_id):
         db.session.commit()
     return redirect(url_for("admin_dashboard"))
 
-@app.route("/make-admin")
+@app.route("/makeadmin")
 def make_admin():
     if "user_id" not in session:
         return "Login first"
