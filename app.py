@@ -86,17 +86,6 @@ def admin_dashboard():
         total_products=total_products
     )
 
-@app.route("/make__admin")
-def make_admin():
-    if "user_id" not in session:
-        return "Login first"
-
-    user = User.query.get(session["user_id"])
-    user.is_admin = True
-    db.session.commit()
-
-    return "You are now admin"
-
 
 @app.route("/")
 def home():
@@ -235,6 +224,8 @@ def login():
 
         if user and check_password_hash(user.password, password):
             login_user(user)
+            if user["email"] == "velloraenterprises@gmail.com":
+                 user["is_admin"] = True
             return redirect(url_for("home"))
         else:
             flash("Invalid credentials")
