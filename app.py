@@ -208,7 +208,8 @@ def signup():
 
         db.session.add(new_user)
         db.session.commit()
-
+        if User.query.count() == 0:
+            new_user.is_admin = True
         return redirect(url_for("login"))
 
     return render_template("signup.html")
@@ -275,19 +276,6 @@ def delete_user(user_id):
         db.session.delete(user)
         db.session.commit()
     return redirect(url_for("admin_dashboard"))
-
-
-@app.route("/make-me-admin")
-def make_me_admin():
-    conn = get_db()
-    cur = conn.cursor()
-
-    cur.execute("UPDATE users SET is_admin = 1 WHERE email = 'YOUR_GMAIL_HERE'")
-    
-    conn.commit()
-    conn.close()
-
-    return "You are now admin ✅"
 
 # =======================
 # INIT DATABASE
