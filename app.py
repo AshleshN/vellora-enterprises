@@ -86,6 +86,17 @@ def admin_dashboard():
         total_products=total_products
     )
 
+@app.route("/make__admin")
+def make_admin():
+    if "user_id" not in session:
+        return "Login first"
+
+    user = User.query.get(session["user_id"])
+    user.is_admin = True
+    db.session.commit()
+
+    return "You are now admin"
+
 
 @app.route("/")
 def home():
@@ -275,17 +286,6 @@ def delete_user(user_id):
         db.session.delete(user)
         db.session.commit()
     return redirect(url_for("admin_dashboard"))
-
-@app.route("/makeadmin")
-def make_admin():
-    if "user_id" not in session:
-        return "Login first"
-
-    user = User.query.get(session["user_id"])
-    user.is_admin = True
-    db.session.commit()
-
-    return "You are now admin"
 
 # =======================
 # INIT DATABASE
