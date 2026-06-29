@@ -18,7 +18,7 @@ login_manager.login_view = "login"
 # DATABASE MODEL
 # =======================
 
-#user database
+#user databasev
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120))
