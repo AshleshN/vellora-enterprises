@@ -1,9 +1,123 @@
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #0e0e1600;
-    color: rgb(155, 232, 221);
-    overflow-x: hidden;
+/*====================================================
+                    VELLORA 2.0
+====================================================*/
+
+/* ===============================
+   VELLORA DESIGN SYSTEM
+================================ */
+
+:root{
+
+    --bg:#050816;
+    --bg2:#0B1120;
+
+    --glass:rgba(255,255,255,0.08);
+    --glass-border:rgba(255,255,255,0.18);
+
+    --primary:#3B82F6;
+    --secondary:#8B5CF6;
+
+    --text:#ffffff;
+    --text2:#c9d1d9;
+
+    --radius:18px;
+
+    --shadow:
+        0 10px 40px rgba(0,0,0,.35);
+
+    --transition:.35s ease;
+}
+
+/*----------------------------------------------------
+                    2. BODY
+----------------------------------------------------*/
+
+body{
+
+    margin:0;
+
+    background:
+    radial-gradient(circle at top left,#1d4ed822 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#8b5cf622 0%,transparent 30%),
+    var(--bg);
+
+    color:var(--text);
+
+    font-family:
+    "Segoe UI",
+    sans-serif;
+
+    min-height:100vh;
+
+}
+
+/*----------------------------------------------------
+                    glass effect
+----------------------------------------------------*/
+
+.glass{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+}
+
+/*----------------------------------------------------
+                    10. PREMIUM
+----------------------------------------------------*/
+
+.btn-premium{
+
+    background:linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary));
+    color:white;
+    border:none;
+    border-radius:14px;
+    padding:14px 26px;
+    cursor:pointer;
+    transition:var(--transition);
+    font-weight:600;
+    box-shadow:
+    0 12px 30px rgba(80,120,255,.35);
+}
+
+.btn-premium:hover{
+    transform:translateY(-4px);
+    box-shadow:
+    0 18px 40px rgba(80,120,255,.55);
+}
+
+/*----------------------------------------------------
+                    7. PRODUCT CARDS
+----------------------------------------------------*/
+
+.product-card{
+
+    transition:.35s;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+}
+
+.product-card:hover{
+
+    transform:
+
+    translateY(-10px)
+
+    scale(1.02);
+
 }
 
 /* Animated gradient */
@@ -32,28 +146,131 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 60px;
-    backdrop-filter: blur(15px);
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar{
+
+    position:sticky;
+
+    top:20px;
+
+    width:92%;
+
+    margin:20px auto;
+
+    padding:18px 35px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:20px;
+
+    z-index:999;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.35);
+
 }
 
-.nav-links a {
-    margin-left: 25px;
-    text-decoration: none;
-    color: rgb(155, 232, 221);
-    transition: 0.3s;
+.logo{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    letter-spacing:4px;
+
 }
 
-.nav-links a:hover {
-    color: #00f5a0;
+.logo span{
+
+    background:linear-gradient(
+    90deg,
+    #3B82F6,
+    #8B5CF6);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
 }
 
-.nav-links a.active {
-    color: #00f5a0;
-    font-weight: bold;
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
 }
+
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    transition:.35s;
+
+    font-weight:500;
+
+}
+
+.nav-links a:hover{
+
+    background:rgba(59,130,246,.15);
+
+    transform:translateY(-2px);
+
+}
+
+.active{
+
+    background:linear-gradient(
+    135deg,
+    #3B82F6,
+    #8B5CF6);
+
+}
+
+.login-btn{
+
+    border:1px solid rgba(255,255,255,.2);
+
+}
+
+.signup-btn{
+
+    background:linear-gradient(
+    135deg,
+    #3B82F6,
+    #8B5CF6);
+
+}
+
+/*----------------------------------------------------
+                    5. HERO SECTION
+----------------------------------------------------*/
 
 .hero-card, .form-card {
     width: 400px;
@@ -66,6 +283,101 @@ body {
     transition: transform 0.3s;
 }
 
+.hero{
+    min-height:calc(100vh - 110px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    padding:40px 20px;
+}
+
+.hero-glow{
+
+    position:absolute;
+
+    width:620px;
+
+    height:620px;
+
+    background:
+    radial-gradient(circle,
+    rgba(59,130,246,.22),
+    transparent 70%);
+
+    filter:blur(80px);
+
+    animation:glowFloat 7s ease-in-out infinite;
+
+}
+
+.hero-card{
+
+    width:min(700px,90%);
+    margin:auto;
+    padding:60px;
+    text-align:center;
+    position:relative;
+    z-index:2;
+
+}
+
+.hero-title{
+    font-size:78px;
+    letter-spacing:10px;
+    font-weight:800;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero-subtitle{
+    font-size:32px;
+    font-weight:700;
+    line-height:1.4;
+    margin-bottom:30px;
+}
+
+.hero-text{
+    max-width:560px;
+    margin:0 auto 40px;
+    font-size:19px;
+    line-height:1.9;
+    opacity:.9;
+}
+
+.hero-btn{
+
+    font-size:18px;
+
+    display:inline-block;
+
+    margin-top:15px;
+
+}
+
+.hero-btn:hover{
+
+    transform:
+
+    translateY(-5px)
+
+    scale(1.05);
+
+}
+
+.scroll-indicator{
+
+    margin-top:45px;
+
+    font-size:32px;
+
+    opacity:.6;
+
+    animation:bounce 2s infinite;
+
+}
+
 input {
     width: 100%;
     margin: 10px 0;
@@ -74,7 +386,11 @@ input {
     border-radius: 8px;
 }
 
-button {
+/*----------------------------------------------------
+                    6. BUTTONS
+----------------------------------------------------*/
+
+.form-card button {
     width: 100%;
     padding: 12px;
     border: none;
@@ -237,4 +553,910 @@ table a {
     border-radius: 10px;
     text-decoration: none;
     font-weight: bold;
+}
+
+/*==============================
+        HERO ANIMATION
+==============================*/
+
+.hero-card{
+
+    animation:heroAppear 1.2s ease;
+}
+
+@keyframes heroAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(40px)
+        scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+}
+
+@keyframes glowFloat{
+
+    0%{
+
+        transform:
+        translateY(0px)
+        scale(1);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-25px)
+        scale(1.08);
+
+    }
+
+    100%{
+
+        transform:
+        translateY(0px)
+        scale(1);
+
+    }
+
+}
+
+@keyframes bounce{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(12px);
+
+    }
+
+}
+
+/*==============================
+        FEATURES
+==============================*/
+
+.features{
+
+    padding:120px 10%;
+
+    text-align:center;
+
+}
+
+.section-title{
+
+    font-size:42px;
+
+    margin-bottom:70px;
+
+    letter-spacing:2px;
+
+}
+
+.feature-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+}
+
+.feature-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:22px;
+
+    padding:45px;
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.feature-card:hover{
+
+    transform:
+
+        translateY(-10px);
+
+    box-shadow:
+
+        0 20px 45px rgba(0,0,0,.25);
+
+}
+
+.feature-icon{
+
+    font-size:52px;
+
+    margin-bottom:20px;
+
+}
+
+.feature-card h3{
+
+    margin-bottom:20px;
+
+    font-size:24px;
+
+}
+
+.feature-card p{
+
+    line-height:1.8;
+
+    opacity:.85;
+
+}
+
+@media(max-width:900px){
+
+.feature-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+/*==============================
+    FEATURED PRODUCTS
+==============================*/
+
+.featured-products{
+
+    padding:120px 10%;
+
+    text-align:center;
+
+}
+
+.section-subtitle{
+
+    color:#b8c4d9;
+
+    margin-top:-30px;
+
+    margin-bottom:60px;
+
+    font-size:18px;
+
+}
+
+.product-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+}
+
+.product-card{
+
+    position:relative;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 45px rgba(82,120,255,.25);
+
+}
+
+.product-card img{
+
+    width:180px;
+
+    height:180px;
+
+    object-fit:contain;
+
+    margin-bottom:25px;
+
+}
+
+.badge{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:linear-gradient(135deg,#4f8cff,#8b5cf6);
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+.price{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    margin:20px 0;
+
+    color:#7ea8ff;
+
+}
+
+.product-btn{
+
+    display:inline-block;
+
+    padding:12px 28px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:linear-gradient(135deg,#4f8cff,#8b5cf6);
+
+    transition:.3s;
+
+}
+
+.product-btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+@media(max-width:900px){
+
+.product-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/*==============================
+      VELLORA PROMISE
+==============================*/
+
+.promise{
+
+    padding:120px 10%;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.promise-card{
+
+    max-width:900px;
+
+    padding:60px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.07);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:28px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.promise-text{
+
+    margin-top:35px;
+
+    font-size:20px;
+
+    line-height:2;
+
+    opacity:.92;
+
+}
+
+/*==============================
+        CORE VALUES
+==============================*/
+
+.values{
+
+    padding:100px 10%;
+
+    text-align:center;
+
+}
+
+.value-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+.value-card{
+
+    padding:40px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+
+}
+
+.value-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(70,120,255,.25);
+
+}
+
+.value-card p{
+
+    margin-top:15px;
+
+    opacity:.9;
+
+    line-height:1.8;
+
+}
+
+@media(max-width:900px){
+
+.value-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/*==============================
+          FOOTER
+==============================*/
+
+.footer{
+
+    margin-top:120px;
+
+    padding:70px 20px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.03);
+
+}
+
+.footer h2{
+
+    font-size:36px;
+
+    letter-spacing:5px;
+
+    margin-bottom:20px;
+
+}
+
+.footer p{
+
+    opacity:.8;
+
+}
+
+.footer-links{
+
+    margin:35px 0;
+
+}
+
+.footer-links a{
+
+    margin:0 15px;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+    color:#6ea8ff;
+
+}
+
+.copyright{
+
+    margin-top:25px;
+
+    font-size:14px;
+
+    opacity:.6;
+
+}
+
+/*==============================
+        SHOPPING HERO
+==============================*/
+
+.shopping-hero{
+    text-align:center;
+    padding:100px 20px 70px;
+}
+
+.shopping-hero h1{
+    font-size:64px;
+    margin-bottom:20px;
+    padding-bottom:90px;
+    letter-spacing:4px;
+
+}
+
+.shopping-hero p{
+    max-width:700px;
+    margin:auto;
+    font-size:20px;
+    line-height:1.8;
+    opacity:.85;
+}
+
+/*==============================
+        SEARCH BAR
+==============================*/
+
+.search-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:70px;
+
+}
+
+.search-box{
+
+    width:100%;
+
+    max-width:750px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:18px 25px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.3s;
+
+}
+
+.search-box:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 40px rgba(80,120,255,.25);
+
+}
+
+.search-box:focus-within{
+
+    border:1px solid #4f8cff;
+
+    box-shadow:0 0 25px rgba(79,140,255,.35);
+
+}
+
+.search-icon{
+
+    font-size:24px;
+
+    margin-right:15px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+.search-box input::placeholder{
+
+    color:rgba(255,255,255,.6);
+
+}
+
+/*==============================
+        CATEGORY PILLS
+==============================*/
+
+.category-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:70px;
+
+}
+
+.category-pill{
+
+    padding:14px 28px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    transition:.3s;
+
+}
+
+.category-pill:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 30px rgba(80,120,255,.25);
+
+}
+
+.category-pill.active{
+
+    background:linear-gradient(
+        135deg,
+        #4f8cff,
+        #7b5cff
+    );
+
+    box-shadow:0 0 25px rgba(79,140,255,.35);
+
+}
+
+/* ===========================
+   PRODUCT GRID
+=========================== */
+
+.products-grid{
+
+    width:90%;
+    margin:80px auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:35px;
+
+}
+
+.product-card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(18px);
+
+    transition:.35s;
+
+}
+
+.product-card:hover{
+
+    transform:
+    translateY(-10px);
+
+    box-shadow:
+    0 25px 60px rgba(82,118,255,.25);
+
+}
+
+.product-image{
+
+    height:260px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#243844;
+
+}
+
+.product-image img{
+
+    width:80%;
+
+    height:220px;
+
+    object-fit:contain;
+
+    transition:.4s;
+
+}
+
+.product-card:hover img{
+
+    transform:scale(1.06);
+
+}
+
+.product-info{
+
+    padding:25px;
+
+}
+
+.product-info h3{
+
+    font-size:26px;
+
+    margin-bottom:12px;
+
+}
+
+.price{
+
+    font-size:24px;
+
+    color:#7fa6ff;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+.description{
+
+    color:#b7c4cf;
+
+    line-height:1.7;
+
+    margin-bottom:22px;
+
+}
+
+.buy-btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    padding:12px 26px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(90deg,#4d8cff,#7856ff);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.buy-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 10px 30px rgba(82,118,255,.45);
+
+}
+
+/* Flash Message */
+
+.flash-message{
+
+    width:fit-content;
+
+    margin:25px auto;
+
+    padding:15px 25px;
+
+    border-radius:12px;
+
+    background:#1fbf75;
+
+    color:white;
+
+    font-weight:bold;
+
+    animation:fadeIn .4s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(-15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/*==============================
+        TOAST NOTIFICATION
+==============================*/
+
+#toast-container{
+
+    position:fixed;
+
+    top:25px;
+
+    right:25px;
+
+    z-index:9999;
+
+}
+
+.toast{
+
+    min-width:280px;
+
+    margin-bottom:15px;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    color:white;
+
+    font-weight:600;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(32,180,110,.18);
+
+    border:1px solid rgba(32,180,110,.45);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+    animation:slideIn .45s ease;
+
+}
+
+.toast.success{
+
+    border-left:5px solid #25d366;
+
+}
+
+@keyframes slideIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(120px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
 }

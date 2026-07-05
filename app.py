@@ -91,18 +91,15 @@ def admin_dashboard():
 def home():
     return render_template("home.html")
 
-
 @app.route("/shopping")
 def shopping():
-    query = request.args.get("search")
-    
-    if query:
-        products = Product.query.filter(Product.name.contains(query)).all()
-    else:
-        products = Product.query.all()
 
-    return render_template("shopping.html", products=products)
+    products = Product.query.all()
 
+    return render_template(
+        "shopping.html",
+        products=products
+    )
 
 @app.route("/premium")
 @login_required
@@ -133,6 +130,7 @@ def add_product():
     return render_template("add_product.html")
 
 
+
 @app.route("/delete-product/<int:product_id>")
 @login_required
 @admin_required
@@ -154,23 +152,29 @@ def cart():
 
     return render_template("cart.html", cart=cart_items, total=total)
 
+@app.route("/product/<int:product_id>")
+def product_detail(product_id):
+    product = Product.query.get_or_404(product_id)
+    return render_template(
+        "product_detail.html", 
+        product=product
+    )
 
 @app.route("/add-to-cart/<int:product_id>")
+@login_required
 def add_to_cart(product_id):
+
     if "cart" not in session:
         session["cart"] = []
 
     session["cart"].append(product_id)
     session.modified = True
 
-    return redirect(url_for("shopping"))
-
-
-@app.route("/product/<int:product_id>")
-def product_detail(product_id):
     product = Product.query.get_or_404(product_id)
-    return render_template("product_detail.html", product=product)
 
+    flash(f"🛒 {product.name} added to cart!", "success")
+
+    return redirect(url_for("product_detail", product_id=product_id))
 
 @app.route("/settings", methods=["GET", "POST"])
 @login_required

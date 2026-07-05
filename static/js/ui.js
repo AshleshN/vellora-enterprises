@@ -17,3 +17,39 @@ document.querySelectorAll(".tilt").forEach(card => {
         card.style.transform = "rotateX(0) rotateY(0)";
     });
 });
+
+const pills = document.querySelectorAll(".category-pill");
+
+pills.forEach(pill => {
+
+    pill.addEventListener("click", () => {
+
+        pills.forEach(p =>
+            p.classList.remove("active")
+        );
+
+        pill.classList.add("active");
+
+    });
+
+});
+
+const toast = document.querySelector(".toast");
+
+if (toast){
+
+    setTimeout(()=>{
+
+        toast.style.transition="0.4s";
+        toast.style.opacity="0";
+        toast.style.transform="translateX(120px)";
+
+        setTimeout(()=>{
+
+            toast.remove();
+
+        },400);
+
+    },3000);
+
+}

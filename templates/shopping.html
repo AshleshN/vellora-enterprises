@@ -4,22 +4,101 @@
     <title></title>
 </head>
 <body>
-    
+
 {% extends "base.html" %}
 {% block content %}
 
-<div class="product-grid">
+<section class="shopping-hero">
+
+    <h1>Shopping</h1>
+
+    <p>
+        Discover premium products carefully selected to deliver
+        quality, style, and value.
+    </p>
+
+</section>
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        <span class="search-icon">🔍</span>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products..."
+        >
+
+    </div>
+
+</section>
+
+<section class="category-section">
+
+    <button class="category-pill active">
+        All Products
+    </button>
+
+    <button class="category-pill">
+        Phones
+    </button>
+
+    <button class="category-pill">
+        Laptops
+    </button>
+
+    <button class="category-pill">
+        Audio
+    </button>
+
+    <button class="category-pill">
+        Wearables
+    </button>
+
+    <button class="category-pill">
+        Gaming
+    </button>
+
+</section>
+
+<section class="products-grid">
+
     {% for product in products %}
-        <a href="/product/{{ product.id }}" class="product-link">
-        <div class="card">
-            <img src="{{ product.image }}">
-            <h3>{{ product.name }}</h3>
-            <p>₹{{ product.price }}</p>
+
+    <div class="product-card">
+
+        <div class="product-image">
+
+            <img src="{{ product.image }}" alt="{{ product.name }}">
+
         </div>
-        </a>
+
+        <div class="product-info">
+
+            <h3>{{ product.name }}</h3>
+
+            <p class="price">₹{{ product.price }}</p>
+
+            <p class="description">
+                {{ product.description }}
+            </p>
+
+            <a href="{{ url_for('product_detail', product_id=product.id) }}"
+               class="buy-btn">
+
+               View Details →
+
+            </a>
+
+        </div>
+
+    </div>
 
     {% endfor %}
-</div>
+
+</section>
 
 {% endblock %}
 
